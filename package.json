@@ -12,6 +12,7 @@
     "@mui/material": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-player": "^2.9.0",
     "swiper": "^8.0.7"
   },
   "version": "0.0.0",

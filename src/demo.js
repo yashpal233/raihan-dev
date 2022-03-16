@@ -10,10 +10,13 @@ import Typography from '@mui/material/Typography';
 
 import Rating from '@mui/material/Rating';
 import { styled } from '@mui/system';
+import { Wrapper } from './index';
+
+import ButtonBase from '@mui/material/ButtonBase';
 
 
 const CustomStepLabel = styled(StepLabel)({
-  display: 'inline-flex',
+  // display: 'inline-flex',
   '.main': {
     margin: 0,
     display: 'flex',
@@ -21,35 +24,114 @@ const CustomStepLabel = styled(StepLabel)({
     'justify-content': 'space-around',
   },
   '.left': {
-    display: 'inline-block'
-  },
-});
-
-const CustomBox = styled(Box)({
-  maxWidth: '375px',
-  backgroundColor: '#ccc',
-  '.MuiStepConnector-vertical.Mui-disabled': {
-    display: 'none'
+    display: 'inline-block',
+    minWidth: '100px'
   },
 });
 
 const steps = [
   {
     label: 'Day 1 <p> Well Done </p>',
-    description: `Well Done!`,
+    description: `Need more inspiration? <p>try this master class from oprah winfrey</p> or this master class from Mama mia`,
     rating: 5,
+    images: [
+      {
+        url: 'https://ibb.co/ctDDcrN',
+        title: 'MamaMia',
+        width: '40%',
+      }
+    ]
   },
   {
     label: 'Day 2 <p> Well Done </p>',
     description: `Great Job!`,
     rating: 4,
+    images: [
+      {
+        url: 'https://i.ibb.co/37Sw52k/istockphoto-1007763808-612x612.jpg',
+        title: 'Relax',
+        width: '40%',
+      }
+    ]
   },
   {
     label: 'Day 3',
     description: `Need more inspiration? <p>try this master class from oprah winfrey</p> or this master class from Mama mia`,
     rating: 3,
+    images: [
+      {
+        url: 'https://i.ibb.co/37Sw52k/istockphoto-1007763808-612x612.jpg',
+        title: 'Test',
+        width: '40%',
+      }
+    ]
   },
 ];
+
+const ImageButton = styled(ButtonBase)({
+  position: 'relative',
+  height: 50,
+  [320]: {
+    width: '100% !important', // Overrides inline-style
+    height: 100,
+  },
+  '&:hover, &.Mui-focusVisible': {
+    zIndex: 1,
+    '& .MuiImageBackdrop-root': {
+      opacity: 0.15,
+    },
+    '& .MuiImageMarked-root': {
+      opacity: 0,
+    },
+    '& .MuiTypography-root': {
+      border: '4px solid currentColor',
+    },
+  },
+});
+
+const ImageSrc = styled('span')({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center 40%',
+});
+
+const Image = styled('span')({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: 'white',
+});
+
+const ImageBackdrop = styled('span')({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundColor: 'black',
+  opacity: 0.4,
+  transition: 'opacity',
+});
+
+const ImageMarked = styled('span')({
+  height: 3,
+  width: 18,
+  backgroundColor: 'white',
+  position: 'absolute',
+  bottom: -2,
+  left: 'calc(50% - 9px)',
+  transition: 'opacity',
+});
+
 
 export default function VerticalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -67,7 +149,7 @@ export default function VerticalLinearStepper() {
   };
 
   return (
-    <CustomBox sx={{ maxWidth: 400, padding: 2 }}>
+    <Wrapper>
       <h1>Authentic self -confidence</h1>
       <Stepper
         activeStep={activeStep}
@@ -82,14 +164,14 @@ export default function VerticalLinearStepper() {
                 ) : null
               }
             >
-              <p className='main'>
+              <div className='main'>
                 <p className='left'
                   dangerouslySetInnerHTML={{
                     __html: step.label
                   }}/>
 
                 <p className='right'><Rating name="read-only" value={step.rating} readOnly /></p>
-              </p>
+              </div>
 
             </CustomStepLabel>
             <StepContent>
@@ -100,6 +182,35 @@ export default function VerticalLinearStepper() {
                   }}
                 />
               </Typography>
+              {step.images.map((image) => (
+                <ImageButton
+                  href='https://www.mamamia.com.au/podcasts/'
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}
+                >
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
@@ -130,6 +241,7 @@ export default function VerticalLinearStepper() {
           </Button>
         </Paper>
       )}
-    </CustomBox>
+      <Button href='/#'>home page</Button>
+    </Wrapper>
   );
 }
