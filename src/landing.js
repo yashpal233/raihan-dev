@@ -36,7 +36,7 @@ const LandingWrapper = styled('div')({
 const links = [
   {
     text: 'Meaningful relationships',
-    url: 'http://localhost:3000/#demo'
+    url: '#demo'
   },
   {
     text: 'Fulfilling career',
