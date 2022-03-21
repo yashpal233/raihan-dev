@@ -38,8 +38,9 @@ export const Wrapper = styled('div')({
     display: 'none'
   },
   h1: {
-    color: '#fdcc08',
-    background: 'black',
+    margin: 0,
+    color: 'white',
+    background: '#00a3ad',
     padding: '10px',
   },
   '.main': {

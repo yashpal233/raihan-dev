@@ -48,7 +48,7 @@ const steps = [
     rating: 4,
     images: [
       {
-        url: 'https://i.ibb.co/37Sw52k/istockphoto-1007763808-612x612.jpg',
+        url: 'https://ibb.co/jfzGBt0',
         title: 'Relax',
         width: '40%',
       }

@@ -47,7 +47,7 @@ export default function Landing() {
           <p>Authentic self-confidence</p>
         </SwiperSlide>
         <SwiperSlide>
-          <ReactPlayer height='200' width='200' url='https://www.youtube.com/watch?v=sMTKlkmhhgE'/>
+          <ReactPlayer height='200' width='200' url='https://www.youtube.com/watch?v=cSfjfb4d4lM'/>
           <p>Adapting to change</p>
         </SwiperSlide>
       </Swiper>
