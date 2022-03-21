@@ -20,7 +20,7 @@ const links = [
     url: 'some page'
   },
   {
-    text: 'Regular excercise',
+    text: 'Regular exercise',
     url: 'some page'
   }
 ]
@@ -33,7 +33,7 @@ export default function Landing() {
         <Button style={{float: 'right', color: '#fdcc08'}} href='#demo'><AddBoxIcon className='icon'/></Button>
       </h1>
 
-      <div className='subHeading'>Choose from 30+ carefully crafter intentions or create your own</div>
+      <div className='subHeading'>Choose from 30+ carefully crafted intentions or create your own</div>
 
       <h2>Mental Wellbeing</h2>
       <Swiper
